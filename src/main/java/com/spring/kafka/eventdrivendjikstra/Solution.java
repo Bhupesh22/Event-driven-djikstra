@@ -14,14 +14,11 @@ class Flight {
     }
 }
 
-public class Solution {
-    public Map<Integer, List<Flight>> graph;
-
-    public Solution() {
-        graph = new HashMap<>();
-    }
+class Solution {
+    private Map<Integer, List<Flight>> graph;
 
     public int findCheapestPrice(int n, int[][] flights, int src, int dst, int k) {
+        graph = new HashMap<>();
         buildGraph(flights);
 
         PriorityQueue<Flight> pq = new PriorityQueue<>((x, y) -> x.cost - y.cost);
@@ -54,7 +51,7 @@ public class Solution {
         return -1;
     }
 
-    public void buildGraph(int[][] flights) {
+    private void buildGraph(int[][] flights) {
         for (int[] flight : flights) {
             int source = flight[0];
             int destination = flight[1];
